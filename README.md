@@ -10,9 +10,10 @@
   1. [find](#find)
   1. [exists](#exists)
   1. [forall](#flatten)
-  1. [flatMap](#flatMap)
+  1. [flatMap](#flatmap)
   1. [reduce](#reduce)
-  1. [zipWithIndex](#zipWithIndex)
+  1. [zipWithIndex](#zipwithindex)
+  1. [takeWhile](#takewhile)
   
 ### map
 The map function applies a function to each element of an iterable
@@ -161,7 +162,19 @@ You can use the `enumerate` function:
 2: c    
 ```
 
-### takewhile
+### takeWhile
+
+The function `takewhile` returns an iterable that contains elements starting from the first one until they don't satisfy a condition.
+
+You can use the function `takewhile` from the module `itertools`:
+
+```python
+> from itertools import takewhile
+> source = [1, 2, 3, 4, 5, 6]
+> res_iterator = takewhile(lambda x: x < 3, source)
+> list(res_iterator)
+[1, 2]
+```
 
 ### dropwhile
 
