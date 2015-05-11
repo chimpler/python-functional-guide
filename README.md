@@ -8,12 +8,27 @@
   1. [map](#map)
   1. [filter](#filter)
   1. [find](#find)
+  1. [contains](#contains)
   1. [exists](#exists)
   1. [forall](#flatten)
   1. [flatMap](#flatmap)
   1. [reduce](#reduce)
   1. [zipWithIndex](#zipwithindex)
   1. [takeWhile](#takewhile)
+  1. [dropwhile](#dropwhile)
+  1. [zip](#zip)
+  1. [groupby](#groupby)
+  1. [reverse](#reverse)
+  1. [head and headOption](#head-and-headoption)
+  1. [last and lastOption](#head-and-lastoption)
+  1. [getOrElse](#getorelse)
+  1. [min and minBy](#min-and-minby)
+  1. [max and maxBy](#max-and-maxby)
+  1. [sort and sortBy](#sort-and-sortBy)
+  1. [sum](#sum)
+  1. [union](#union)
+  1. [set-operations](#set-operations)
+  1. [dictionary-operations](#dictionary-operations)
   
 ### map
 The map function applies a function to each element of an iterable
@@ -42,7 +57,7 @@ Or more readable using a list comprehension:
 ```
 
 ### filter
-The filter function keeps elements of a list that matches a condition.
+The filter function keeps elements of an iterable that matches a condition.
 
 You can use the `filter()` function:
 ```python
@@ -88,6 +103,8 @@ def is_even(x):
 
 Note that the generator is evaluated lazily so next would not evaluate elements after the element is found. The second parameter of the
 next function is the value to return if the iterator is empty 
+
+### contains
 
 ### exists
 The exists method returns `True` if an element satisfies a condition.
@@ -182,26 +199,31 @@ You can use the function `takewhile` from the module `itertools`:
 
 ### groupby
 
-# Dictionaries
+### reverse
 
-### Initialization
-- When initializing a dictionary, try to set all elements in one call.
+### head and headOption
 
-```python
-# bad
-d = {}	
-d['a'] = 1
-d['b'] = 2	
+### last and lastOption
 
-# good
-d = {
-    'a': 1,
-    'b': 2,
-}
-```
+### getOrElse
+
+### min and minBy
+
+### max and maxBy
+
+### sort and sortBy
+
+### sum
+
+### union
+
+### Set Operations
+
+### Dictionary Operations
+
+##### Transforming a dictionary into another dictionary
 	
-### List comprehension
-	
+You can iterate on a dictionary using the `items()` method
 ```python
 # good, works on Python 2.7+ but does not work on Python 2.6
 reverse_dictionary = {v: k for k, v in d.items()}
@@ -211,5 +233,3 @@ reverse_dictionary = dict((v, k) for k, v in d.items())
 ```
 
 You can also use `iteritems()` instead of `items()` if the dictionary is large.
-
-### Exceptions
