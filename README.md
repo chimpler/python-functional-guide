@@ -30,7 +30,6 @@ Small guide for those transitioning from a functional programming language to Py
   1. [union](#union)
   1. [set-operations](#set-operations)
   1. [dictionary-operations](#dictionary-operations)
-  1. [toIterator](#toiterator)
 
 ### Iterator, generator, iterable and list
 An iterator is a stateful helper object that will return the next value when calling the method `next()`. A generator is a special kind of iterator that
@@ -300,7 +299,7 @@ In Python, you can use the method `reversed`:
 The method head returns the first element of an iterable and headOption returns an option of the first element or None if the iterable is empty.
 
 Python does not have Option but we can have something that returns None if the iterable is empty. We can use the method `next`:
-```
+```python
 > l = [1, 2, 3]
 > next(iter(l), None)
 1
@@ -310,7 +309,7 @@ None
 ```
 
 Or an if statement::
-```
+```python
 > l = [1, 2, 3]
 > l[0] if l else None
 1
@@ -342,6 +341,18 @@ None
 
 ### getOrElse
 
+The function getOrElse returns a value held by an option or a default value if the option is None.
+
+There is no option in Python but one can do something like:
+```python
+> t = 5
+> -1 if t is None else t
+5
+> t = None
+> -1 if t is None else t
+-1
+```
+
 ### min and minBy
 
 ### max and maxBy
@@ -349,6 +360,14 @@ None
 ### sort and sortBy
 
 ### sum
+
+The function sum returns the sum of an iterable or iterator:
+```python
+> sum([1, 2, 3])
+6
+> sum(iter([1,2,3]))
+6
+```
 
 ### union
 
@@ -383,5 +402,3 @@ reverse_dictionary = dict((v, k) for k, v in d.items())
 
 You can also use `iteritems()` instead of `items()` if the dictionary is large.
 
-### toIterator
-Convert an iterable to an iterator
