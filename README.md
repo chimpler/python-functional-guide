@@ -1,11 +1,11 @@
 
     UNDER CONSTRUCTION
 
-    Small guide for those transitioning from a functional programming language to Python. We use Scala methods and provide their equivalent in Python.
+Small guide for those transitioning from a functional programming language to Python. We use Scala methods and provide their equivalent in Python.
 
 # Table of Contents
 
-  1. [Iterator, generator, iterable and list](#iterator,-generator,-iterable-and-list)
+  1. [Iterator, generator, iterable and list](#iterator-generator-iterable-and-list)
   1. [map](#map)
   1. [filter and filterNot](#filter-and-filternot)
   1. [find](#find)
@@ -353,6 +353,20 @@ None
 ### union
 
 ### Set Operations
+
+You can instantiate a new set as follows:
+```python
+s = {1, 2, 3} # does not work with Python 2.6
+s = set([1, 2, 3])
+```
+
+You can use the following methods:
+* union
+* intersection
+* union
+* isdisjoint
+* issubset
+* issuperset
 
 ### Dictionary Operations
 
