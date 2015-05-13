@@ -77,7 +77,7 @@ itself.  A list (e.g., `[1, 2, 3]`) and a tuple (e.g., `(1, 2, 3)`) are also ite
 List and tuples are called sequence since we can access any of their element directly using their index (e.g., `l[0]`).
 
 Using a list or iterator depends on the use case. If the data is going to be read once, it would make sense to use an iterator. If the data is small
-it's usually not important whether you use a generator or a list.
+it's usually not important whether you use an iterator or a list.
 Using a tuple instead of a list makes sense when there is a structure (e.g., the first element is X and the second element is Y) and the number of elements doesn't change from
 a tuple to the other.
 
@@ -114,7 +114,7 @@ Or more readable using a list comprehension:
 ```
 
 ### filter and filterNot
-The filter function keeps elements of an iterable that matches a condition. filterNot keeps elements of the iterable that does not match a condition
+The `filter` function keeps elements of an iterable that matches a condition. `filterNot` keeps elements of the iterable that does not match a condition
 
 You can use the `ifilter()` and `ifilterfalse` functions:
 ```python
@@ -151,7 +151,7 @@ Or more readable using a list comprehension:
 ```
 
 ### find
-The find method returns the first occurence of an iterator that satisfies a condition
+The `find` method returns the first occurence of an iterator that satisfies a condition
 
 You can use the `next()` method combined with a map or list comprehension:
 ```python
@@ -182,7 +182,7 @@ True
 ```
 
 ### exists
-The exists method returns `True` if an element satisfies a condition.
+The `exists` method returns `True` if an element satisfies a condition.
  
 You can use the `any()` method combined with a map or list comprehension:
 ```python
@@ -193,7 +193,7 @@ True
 any will return `True` as soon as it finds a `True` value from an iterable.
  
 ### forall
-The forall method returns `True` if all the elements of the iterable satisfy the condition.
+The `forall` method returns `True` if all the elements of the iterable satisfy the condition.
 
 You can use the `all` method combined with a map or list comprehension: 
 ```python
@@ -203,7 +203,7 @@ False
 ```
 
 ### flatten
-The flatten method converts an iterable of iterable of elements into an iterable of elements.
+The `flatten` method converts an iterable of iterable of elements into an iterable of elements.
 
 You can use a list comprehension:
 ```python
@@ -213,7 +213,7 @@ You can use a list comprehension:
 ```
 
 ### flatMap
-The flatMap applies map and flatten.
+The `flatMap` applies map and flatten.
 You can use a list comprehension:
 ```python
 > def create_range(x):
@@ -228,7 +228,7 @@ You can use a list comprehension:
 ```
 
 ### reduce
-The reduce function aggregates all the elements of a list into one.
+The `reduce` function aggregates all the elements of a list into one.
   
 You can use the `reduce` function:  
 ```python
@@ -311,7 +311,7 @@ previously created.
 In this case, since the grouping function is a modulo, sorting the list before grouping would have worked.
 
 ### reverse
-The reverse function reverses a sequence.
+The `reverse` function reverses a sequence.
 
 In Python, you can use the method `reversed`:
 ```python
@@ -322,7 +322,7 @@ In Python, you can use the method `reversed`:
 ```
 
 ### head and headOption
-The method head returns the first element of an iterable and headOption returns an option of the first element or None if the iterable is empty.
+The method `head` returns the first element of an iterable and `headOption` returns an option of the first element or None if the iterable is empty.
 
 Python does not have Option but we can have something that returns None if the iterable is empty. We can use the method `next`:
 ```python
@@ -345,7 +345,7 @@ None
 ```
 
 ### last and lastOption
-The method last returns the last element of an iterable and lastOption returns an option of the last element or None if the iterable is empty.
+The method `last` returns the last element of an iterable and `lastOption` returns an option of the last element or None if the iterable is empty.
 ```python
 > l = [1, 2, 3]
 > next(reversed(l), None)
@@ -413,7 +413,7 @@ using a function:
 
 ### sum
 
-The function sum returns the sum of an iterable:
+The function `sum` returns the sum of an iterable:
 ```python
 > sum([1, 2, 3])
 6
