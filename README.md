@@ -413,11 +413,9 @@ using a function:
 
 ### sum
 
-The function sum returns the sum of an iterable or iterator:
+The function sum returns the sum of an iterable:
 ```python
 > sum([1, 2, 3])
-6
-> sum(iter([1,2,3]))
 6
 ```
 
