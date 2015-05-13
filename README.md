@@ -23,8 +23,8 @@ Small guide for those transitioning from a functional programming language to Py
   1. [head and headOption](#head-and-headoption)
   1. [last and lastOption](#head-and-lastoption)
   1. [getOrElse](#getorelse)
-  1. [min and minBy](#min-and-minby)
-  1. [max and maxBy](#max-and-maxby)
+  1. [min and max](#min-and-minby)
+  1. [minBy and maxBy](#max-and-maxby)
   1. [sort and sortBy](#sort-and-sortBy)
   1. [sum](#sum)
   1. [union](#union)
@@ -77,7 +77,7 @@ itself.  A list (e.g., `[1, 2, 3]`) and a tuple (e.g., `(1, 2, 3)`) are also ite
 <tupleiterator at 0x1082afb10>
 ```
 
-Moreover since list and tuples are called sequence since we can access any of their element directly using their index (e.g., `l[0]`).
+List and tuples are called sequence since we can access any of their element directly using their index (e.g., `l[0]`).
 
 ### map
 The map function applies a function to each element of an iterable
@@ -280,12 +280,35 @@ You can use the function `dropwhile` from the module `itertools`:
 
 ### zip
 
-The function `zip` combines 2 iterable
+The function `zip` and izip` from `itertools` combines 2 iterable and create respectively a list and an iterator:
+```python
+> zip([1, 2, 3], [4, 5, 6]
+[(1, 3), (2, 4), (3, 5)]
 
-### groupby
+> from itertools import izip
+> izip(iter([1,2,3]), [3,4,5])
+<itertools.izip at 0x102a96998>
+```
+
+### groupBy
+
+The function `groupBy` groups elements by a applying a function to all the elements of an iterator / iterable and grouping those with the same function result.
+
+In Python, the `groupby` method provided in itertools only groups elements with the same function result that are contiguous.
+For instance:
+```python
+> list(groupby(iter([1, 3, 2, 4, 5]), lambda x: x % 2))  # we wrap with list so we can see the result
+[(1, <itertools._grouper at 0x107309610>),
+ (0, <itertools._grouper at 0x107309810>),
+ (1, <itertools._grouper at 0x107309a50>)]
+```
+In this case, 1 and 3 are grouped together since `x % 2 == 1`, then 2 and 4 and grouped together (`x % 2 == 0`) but then again 5 belongs to a new group which was
+previously created.
+
+In this case, since the grouping function is a modulo, sorting the list before grouping would have worked.
 
 ### reverse
-The reverse function reverse a sequence.
+The reverse function reverses a sequence.
 
 In Python, you can use the method `reversed`:
 ```python
@@ -320,7 +343,7 @@ None
 
 ### last and lastOption
 The method last returns the last element of an iterable and lastOption returns an option of the last element or None if the iterable is empty.
-```
+```python
 > l = [1, 2, 3]
 > next(reversed(l), None)
 3
@@ -341,7 +364,7 @@ None
 
 ### getOrElse
 
-The function getOrElse returns a value held by an option or a default value if the option is None.
+The function `getOrElse` returns a value held by an option or a default value if the option is None.
 
 There is no option in Python but one can do something like:
 ```python
@@ -353,9 +376,17 @@ There is no option in Python but one can do something like:
 -1
 ```
 
-### min and minBy
+### min and max
 
-### max and maxBy
+The function `min` and `max` returns respectively the minimum and maximum element of an iterable / iterator. In Python, you can do:
+```python
+> min([3, 2, 1, 5, 4])
+1
+> max([3, 2, 1, 5, 4])
+5
+```
+
+### minBy and maxBy
 
 ### sort and sortBy
 
