@@ -1,6 +1,3 @@
-
-    UNDER CONSTRUCTION
-
 Small guide for those transitioning from a functional programming language to Python. We use Scala methods and provide their equivalent in Python.
 
 # Table of Contents
@@ -66,7 +63,7 @@ You can also create a generator using a generator comprehension:
 
 The generator creates the next value lazily whenever the `next` method is called.
 
-An iterable is an object that has a reference to an iterator (through the method `__iter__`). An iterator is itself an iterable and has the method `__iter__` returning
+An iterable is an object that has a reference to an iterator (through the method `__iter__`). In Python, an iterator is itself an iterable and has the method `__iter__` returning
 itself.  A list (e.g., `[1, 2, 3]`) and a tuple (e.g., `(1, 2, 3)`) are also iterables. You can convert an iterable to iterator using the `iter` function:
 ```python
 > l = [1, 2, 3]
@@ -79,8 +76,15 @@ itself.  A list (e.g., `[1, 2, 3]`) and a tuple (e.g., `(1, 2, 3)`) are also ite
 
 List and tuples are called sequence since we can access any of their element directly using their index (e.g., `l[0]`).
 
+Using a list or generator depends on the use case. If the data is going to be read once, it would make sense to use a generator. If the data is small
+it's usually not important whether you use a generator or a list.
+Using a tuple makes sense when there is a structure (e.g., the first element is X and the second element is Y) and the number of elements doesn't change from
+a tuple to the other.
+
+In the following, we'll favor generator over list as they are more memory efficient and can easily be converted to a list (e.g., `list(it)`)
+
 ### map
-The map function applies a function to each element of an iterable
+The `map` function applies a function to each element of an iterable
 
 You can use the `imap()` function:
 ```python
@@ -96,8 +100,7 @@ def double(x):
 > list(res)
 [2, 4]
 ```
-
-Note: There is also a `map` function but it returns a list and not a generator
+Note: There is also a `map` function but it returns a list and not a generator:
 
 Or more readable using a list comprehension:
 ```python
@@ -170,7 +173,7 @@ Note that the generator is evaluated lazily so next would not evaluate elements 
 next function is the value to return if the iterator is empty 
 
 ### contains
-The contains method returns `True` if an element is present in the iterable.
+The `contains` method returns `True` if an element is present in the iterable.
 
 In Python you can use the `in` operator:
 ```python
@@ -378,7 +381,7 @@ There is no option in Python but one can do something like:
 
 ### min and max
 
-The function `min` and `max` returns respectively the minimum and maximum element of an iterable / iterator. In Python, you can do:
+The function `min` and `max` returns respectively the minimum and maximum element of an iterable. In Python, you can do:
 ```python
 > min([3, 2, 1, 5, 4])
 1
@@ -388,7 +391,25 @@ The function `min` and `max` returns respectively the minimum and maximum elemen
 
 ### minBy and maxBy
 
+The function `minBy` and `maxBy` returns respectively the minimum and maximum element of an iterable according to the result of a function. In Python, you can
+use the method `min` and `max` and pass the function as the `key` parameter:
+```python
+> min([3, 2, 1, 5, 4], key=lambda x: 5 - x)
+5
+> max([3, 2, 1, 5, 4], key=lambda x: 5 - x)
+1
+```
+
 ### sort and sortBy
+
+The function `sort` sorts an iterable and `sortBy` sorts an iterable using a function. In Python one can use the function `sorted` with the optional parameter `key` to sort
+using a function:
+```python
+> sorted([3, 1, 2])
+[1, 2, 3]
+> sorted([3, 1, 2], key=lambda x: 3 - x)
+[3, 2, 1]
+```
 
 ### sum
 
@@ -401,6 +422,22 @@ The function sum returns the sum of an iterable or iterator:
 ```
 
 ### union
+
+The function `union` chains 2 iterables together. In Python one can use the function `chain` from itertools:
+```python
+> from itertools import chain
+> it = chain([1, 2, 3], [4, 5, 6])
+> list(it)
+[1, 2, 3, 4, 5, 6]
+```
+
+If you deal with sequences (list or tuples), you can use the `+` operator:
+```python
+> [1, 2, 3] + [4, 5, 6]
+[1, 2, 3, 4, 5, 6]
+> (1, 2, 3) + (4, 5, 6)
+(1, 2, 3, 4, 5, 6)
+```
 
 ### Set Operations
 
