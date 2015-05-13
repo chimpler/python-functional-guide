@@ -76,9 +76,9 @@ itself.  A list (e.g., `[1, 2, 3]`) and a tuple (e.g., `(1, 2, 3)`) are also ite
 
 List and tuples are called sequence since we can access any of their element directly using their index (e.g., `l[0]`).
 
-Using a list or generator depends on the use case. If the data is going to be read once, it would make sense to use a generator. If the data is small
+Using a list or iterator depends on the use case. If the data is going to be read once, it would make sense to use an iterator. If the data is small
 it's usually not important whether you use a generator or a list.
-Using a tuple makes sense when there is a structure (e.g., the first element is X and the second element is Y) and the number of elements doesn't change from
+Using a tuple instead of a list makes sense when there is a structure (e.g., the first element is X and the second element is Y) and the number of elements doesn't change from
 a tuple to the other.
 
 In the following, we'll favor generator over list as they are more memory efficient and can easily be converted to a list (e.g., `list(it)`)
