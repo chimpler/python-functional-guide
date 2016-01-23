@@ -25,6 +25,7 @@ Small guide for those transitioning from a functional programming language to Py
   1. [sort and sortBy](#sort-and-sortBy)
   1. [sum](#sum)
   1. [union](#union)
+  1. [slide](#slides)
   1. [set-operations](#set-operations)
   1. [dictionary-operations](#dictionary-operations)
 
@@ -435,6 +436,15 @@ If you deal with sequences (list or tuples), you can use the `+` operator:
 [1, 2, 3, 4, 5, 6]
 > (1, 2, 3) + (4, 5, 6)
 (1, 2, 3, 4, 5, 6)
+```
+
+### slide
+
+The function `slide` allows to create a sliding window. In Python you can do the followings:
+```python
+window_size = 3
+l = range(100)
+slides = [l[i : i + window_size] for i in xrange(len(l) - window_size)]
 ```
 
 ### Set Operations
