@@ -442,9 +442,9 @@ If you deal with sequences (list or tuples), you can use the `+` operator:
 
 The function `slide` allows to create a sliding window. In Python you can do the followings:
 ```python
-window_size = 3
 l = range(100)
-slides = [l[i : i + window_size] for i in xrange(len(l) - window_size)]
+window_size = 3
+slides = [l[i : i + window_size] for i in xrange(len(l) - window_size + 1)]
 ```
 
 ### Set Operations
