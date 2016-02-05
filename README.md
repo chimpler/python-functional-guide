@@ -213,6 +213,15 @@ You can use a list comprehension:
 [1, 2, 3, 4]
 ```
 
+or you can use the function `chain` from itertools:
+```python
+> source = [[1, 2], [3, 4]]
+> flat_gen = itertools.chain(*source)
+> list(flat_gen)
+[1, 2, 3, 4]
+```
+
+
 ### flatMap
 The `flatMap` applies map and flatten.
 You can use a list comprehension:
@@ -223,10 +232,20 @@ You can use a list comprehension:
 # We want to do something like source.flatMap(create_range)
 > source = [10, 20, 30]
 > [elem for s_elem in source for elem in create_range(s_elem)]
-[[10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
- [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
- [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]]
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+ 32, 33, 34, 35, 36, 37, 38, 39]
 ```
+
+or you can use the function `chain` from itertools:
+```python
+> source = [10, 20, 30]
+> it = itertools.chain(*[create_range(s_elem) for s_elem in source])
+> list(it)
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+ 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+ 32, 33, 34, 35, 36, 37, 38, 39]
+``` 
 
 ### reduce
 The `reduce` function aggregates all the elements of a list into one.
