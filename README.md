@@ -25,9 +25,10 @@ Small guide for those transitioning from a functional programming language to Py
   1. [sort and sortBy](#sort-and-sortBy)
   1. [sum](#sum)
   1. [union](#union)
-  1. [slide](#slides)
+  1. [slide](#slide)
   1. [set-operations](#set-operations)
   1. [dictionary-operations](#dictionary-operations)
+  1. [case class](#case-class)
 
 ### Iterator, generator, iterable and list
 An iterator is a stateful helper object that will return the next value when calling the method `next()`. A generator is a special kind of iterator that
@@ -461,9 +462,10 @@ If you deal with sequences (list or tuples), you can use the `+` operator:
 
 The function `slide` allows to create a sliding window. In Python you can do the followings:
 ```python
-l = range(100)
-window_size = 3
-slides = [l[i : i + window_size] for i in xrange(len(l) - window_size + 1)]
+> l = range(10)
+> window_size = 3
+> slides = [l[i : i + window_size] for i in xrange(len(l) - window_size + 1)]
+[[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5], [4, 5, 6], [5, 6, 7], [6, 7, 8], [7, 8, 9]]
 ```
 
 ### Set Operations
@@ -497,3 +499,15 @@ reverse_dictionary = dict((v, k) for k, v in d.items())
 
 You can also use `iteritems()` instead of `items()` if the dictionary is large.
 
+### case class
+
+You can use a `namedtuple` to do that. For instance:
+```python
+> from collections import namedtuple
+> Person = namedtuple('Person', ['name', 'age'])
+> john = Person('john', 25)
+> john.name
+'john'
+> john.age
+25
+```
