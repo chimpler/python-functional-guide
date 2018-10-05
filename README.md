@@ -511,3 +511,15 @@ You can use a `namedtuple` to do that. For instance:
 > john.age
 25
 ```
+
+You can also specify default arguments using `__new__.__defaults__`:
+```python
+> from collections import namedtuple
+> Person = namedtuple('Person', ['name', 'age'])
+> Person.__new__.__defaults__ = ('John Doe', 99)
+> john = Person('john')
+> john.name
+'john'
+> john.age
+99
+```
