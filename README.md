@@ -13,7 +13,8 @@ Small guide for those transitioning from a functional programming language to Py
   1. [reduce](#reduce)
   1. [zipWithIndex](#zipwithindex)
   1. [takeWhile](#takewhile)
-  1. [dropwhile](#dropwhile)
+  1. [dropWhile](#dropwhile)
+  1. [scanLeft](#scanleft)
   1. [zip](#zip)
   1. [groupby](#groupby)
   1. [reverse](#reverse)
@@ -300,6 +301,17 @@ You can use the function `dropwhile` from the module `itertools`:
 > res_iterator = dropwhile(lambda x: x < 3, source)
 > list(res_iterator)
 [3, 4, 5, 6]
+```
+
+### scanLeft
+
+The function `accumulate` allows to do things like running sum:
+```python
+> from itertools import accumulate
+> source = [1, 2, 3, 4, 5, 6]
+> res_iterator = accumulate(source, lambda a, b: a + b)
+> list(res_iterator)
+[1, 3, 6, 10, 15, 21]
 ```
 
 ### zip
