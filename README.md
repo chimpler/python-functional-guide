@@ -12,6 +12,7 @@ Small guide for those transitioning from a functional programming language to Py
   1. [flatMap](#flatmap)
   1. [reduce](#reduce)
   1. [zipWithIndex](#zipwithindex)
+  1. [take](#take)
   1. [takeWhile](#takewhile)
   1. [dropWhile](#dropwhile)
   1. [scanLeft](#scanleft)
@@ -274,6 +275,31 @@ You can use the `enumerate` function:
 0: a
 1: b
 2: c    
+```
+
+### take
+
+The function `take` returns an iterator that contains the first n elements of an iterator.
+
+You can use the function `islice` from the module `itertools` similar to the regular slice for a list:
+* `islice(source, end)` similar to `list[:end]`
+* `islice(source, start, end)` similar to `list[start:end]`
+* `islice(source, start, end, step)` similar to `list[start:end:step]`. Note that `step` must be a positive number unlike for a list.
+
+```python
+>  from itertools import islice
+> source = [1, 2, 3, 4, 5]
+> res_iterator = islice(source, 4)
+> print(list(res_iterator))
+[1, 2, 3, 4]
+
+> res_iterator = islice(source, 0, 4)
+> print(list(res_iterator))
+[1, 2, 3, 4]
+
+> res_iterator = islice(source, 0, 4, 2)
+> print(list(res_iterator))
+[1, 3]
 ```
 
 ### takeWhile
